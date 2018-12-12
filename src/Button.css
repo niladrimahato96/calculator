@@ -1,0 +1,15 @@
+.numberKeys input{
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+.specialKeys input{
+  background: #ff8c00;
+  border: 1px solid #868686;
+  border-bottom: none;
+  outline: none;
+  color: white;
+  font-weight: 700;
+  font-size: 25px;
+}

@@ -5,9 +5,10 @@ import Button from './Button';
 class App extends React.Component{
   state = {
     queryString : null,
-    total : 0
+    total : 0,
+    test : 0
   }
-  buttonNumbers = [1,2,3,4,5,6,7,8,9,0];
+  buttonNumbers = ['C','+/-','%',1,2,3,4,5,6,7,8,9,0,'.'];
   buttonsSpecial = [
     {
       id : 10,
@@ -32,30 +33,47 @@ class App extends React.Component{
   ];
 
   makeString = str => {
+
     if(str === "="){
       this.setState({
-        total : eval(this.state.queryString)
+        total : ""+Math.round(eval(this.state.queryString)*100)/100,
+        queryString : ""+Math.round(eval(this.state.queryString)*100)/100
+      });
+    }else if(str === "C"){
+      this.setState({
+        queryString : null,
+        total : 0
       });
     }else{
       if(this.state.queryString === null){
         this.setState({
-          queryString : str
+          queryString : ""+str
         });
       }else{
-        this.setState({
-          queryString : ""+this.state.queryString+str
-        });
+        let c = this.state.queryString;
+        //let spArray = ['+','-','*','/','%'];
+
+        if(c.charAt(c.length-1) === str){
+          this.setState({
+            test : typeof(c)
+          });
+        }else{
+          this.setState({
+            queryString : ""+this.state.queryString+str,
+            test : c.charAt(c.length-1)
+          });
+        }
+
+
       }
-      setTimeout(()=>{
-        console.log(this.state.queryString);
-      },10);
     }
   }
   render(){
     return(
-        <div className="col-md-2">
+        <div className="container" style={{ width : '16%', marginTop : '13%', marginBottom: '13%', paddingLeft : '0px', paddingRight : '0px', boxShadow : '0px 0px 11px #9c9c9c' }}>
           <Screen queryString={this.state.queryString} total={this.state.total}/>
           <Button buttonNumbers={this.buttonNumbers} onClick={this.makeString} buttonsSpecial={this.buttonsSpecial}/>
+          
         </div>
     );
   }
