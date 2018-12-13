@@ -73,7 +73,7 @@ class App extends React.Component{
         <div className="container" style={{ width : '16%', marginTop : '13%', marginBottom: '13%', paddingLeft : '0px', paddingRight : '0px', boxShadow : '0px 0px 11px #9c9c9c' }}>
           <Screen queryString={this.state.queryString} total={this.state.total}/>
           <Button buttonNumbers={this.buttonNumbers} onClick={this.makeString} buttonsSpecial={this.buttonsSpecial}/>
-          
+          {this.state.test}
         </div>
     );
   }
