@@ -34,7 +34,7 @@ class App extends React.Component{
 
   makeString = str => {
 // NEED TO FIX THE LOGIC
-// TEST .git
+// TEST .git amit
     if(str === "="){
       this.setState({
         total : ""+Math.round(eval(this.state.queryString)*100)/100,
